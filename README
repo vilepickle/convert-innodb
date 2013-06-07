@@ -1,0 +1,5 @@
+A simple script to convert tables in a MySQL database into InnoDB.
+
+To use, configure the root MySQL user and password in the script.  Once coonfigured, run the script with the name of the database you want to convert.  IE:
+
+./innodb.sh my_db_name

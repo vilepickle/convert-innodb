@@ -1,0 +1,10 @@
+DATABASENAME=$1
+MYSQLUSER="ROOTUSER"
+MYSQLPASSWORD="ROOTPASSSWORD"
+
+echo 'SHOW TABLES;' \
+ | mysql -u ${MYSQLUSER} -p${MYSQLPASSWORD} ${DATABASENAME} \
+ | awk '!/^Tables_in_/ {print "ALTER TABLE `"$0"` ENGINE = InnoDB;"}' \
+ | column -t \
+ | mysql -u ${MYSQLUSER} -p${MYSQLPASSWORD} ${DATABASENAME}
+
